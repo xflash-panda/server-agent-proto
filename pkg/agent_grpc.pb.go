@@ -53,15 +53,14 @@ func (c *agentClient) Heartbeat(ctx context.Context, in *HeartbeatRequest, opts 
 }
 
 // AgentServer is the server API for Agent service.
-// All implementations must embed UnimplementedAgentServer
+// All implementations should embed UnimplementedAgentServer
 // for forward compatibility
 type AgentServer interface {
 	Config(context.Context, *ConfigRequest) (*ConfigResponse, error)
 	Heartbeat(context.Context, *HeartbeatRequest) (*ConfigResponse, error)
-	mustEmbedUnimplementedAgentServer()
 }
 
-// UnimplementedAgentServer must be embedded to have forward compatible implementations.
+// UnimplementedAgentServer should be embedded to have forward compatible implementations.
 type UnimplementedAgentServer struct {
 }
 
@@ -71,7 +70,6 @@ func (UnimplementedAgentServer) Config(context.Context, *ConfigRequest) (*Config
 func (UnimplementedAgentServer) Heartbeat(context.Context, *HeartbeatRequest) (*ConfigResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Heartbeat not implemented")
 }
-func (UnimplementedAgentServer) mustEmbedUnimplementedAgentServer() {}
 
 // UnsafeAgentServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to AgentServer will
