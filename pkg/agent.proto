@@ -2,7 +2,7 @@ syntax = "proto3";
 import "google/protobuf/any.proto";
 option go_package = "github.com/xflash-panda/server-agent-proto/pkg";
 
-package service;
+package pkg;
 
 enum NodeType {
   SHADOWSOCKS = 0;

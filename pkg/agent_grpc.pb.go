@@ -36,7 +36,7 @@ func NewAgentClient(cc grpc.ClientConnInterface) AgentClient {
 
 func (c *agentClient) Config(ctx context.Context, in *ConfigRequest, opts ...grpc.CallOption) (*ConfigResponse, error) {
 	out := new(ConfigResponse)
-	err := c.cc.Invoke(ctx, "/service.Agent/Config", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/pkg.Agent/Config", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +45,7 @@ func (c *agentClient) Config(ctx context.Context, in *ConfigRequest, opts ...grp
 
 func (c *agentClient) Heartbeat(ctx context.Context, in *HeartbeatRequest, opts ...grpc.CallOption) (*ConfigResponse, error) {
 	out := new(ConfigResponse)
-	err := c.cc.Invoke(ctx, "/service.Agent/Heartbeat", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/pkg.Agent/Heartbeat", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -94,7 +94,7 @@ func _Agent_Config_Handler(srv interface{}, ctx context.Context, dec func(interf
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/service.Agent/Config",
+		FullMethod: "/pkg.Agent/Config",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AgentServer).Config(ctx, req.(*ConfigRequest))
@@ -112,7 +112,7 @@ func _Agent_Heartbeat_Handler(srv interface{}, ctx context.Context, dec func(int
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/service.Agent/Heartbeat",
+		FullMethod: "/pkg.Agent/Heartbeat",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AgentServer).Heartbeat(ctx, req.(*HeartbeatRequest))
@@ -124,7 +124,7 @@ func _Agent_Heartbeat_Handler(srv interface{}, ctx context.Context, dec func(int
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Agent_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "service.Agent",
+	ServiceName: "pkg.Agent",
 	HandlerType: (*AgentServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
