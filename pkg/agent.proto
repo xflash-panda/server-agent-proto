@@ -1,0 +1,41 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+option go_package = "github.com/xflash-panda/server-agent-proto/pkg";
+
+package service;
+
+enum NodeType {
+  SHADOWSOCKS = 0;
+  TROJAN = 1;
+  VMESS = 2;
+  HYSTERIA = 3;
+  HYSTERIA2 = 4;
+}
+
+message CommonParams {
+  int32 node_id = 1;
+  NodeType coinType = 2;
+}
+
+message ConfigRequest {
+  CommonParams params = 1;
+}
+
+message ConfigResponse {
+  bool result = 1;
+  google.protobuf.Any data = 2;
+}
+
+message HeartbeatRequest {
+   CommonParams params = 1;
+}
+
+message HeartbeatResponse {
+  bool result = 2;
+}
+
+service Agent
+{
+  rpc Config(ConfigRequest) returns (ConfigResponse);
+  rpc Heartbeat(HeartbeatRequest) returns (ConfigResponse);
+}
