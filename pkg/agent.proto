@@ -14,7 +14,7 @@ enum NodeType {
 
 message CommonParams {
   int32 node_id = 1;
-  NodeType coinType = 2;
+  NodeType node_type = 2;
 }
 
 message ConfigRequest {
