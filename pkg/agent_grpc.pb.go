@@ -23,7 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AgentClient interface {
 	Config(ctx context.Context, in *ConfigRequest, opts ...grpc.CallOption) (*ConfigResponse, error)
-	Heartbeat(ctx context.Context, in *HeartbeatRequest, opts ...grpc.CallOption) (*ConfigResponse, error)
+	Heartbeat(ctx context.Context, in *HeartbeatRequest, opts ...grpc.CallOption) (*HeartbeatResponse, error)
 }
 
 type agentClient struct {
@@ -43,8 +43,8 @@ func (c *agentClient) Config(ctx context.Context, in *ConfigRequest, opts ...grp
 	return out, nil
 }
 
-func (c *agentClient) Heartbeat(ctx context.Context, in *HeartbeatRequest, opts ...grpc.CallOption) (*ConfigResponse, error) {
-	out := new(ConfigResponse)
+func (c *agentClient) Heartbeat(ctx context.Context, in *HeartbeatRequest, opts ...grpc.CallOption) (*HeartbeatResponse, error) {
+	out := new(HeartbeatResponse)
 	err := c.cc.Invoke(ctx, "/pkg.Agent/Heartbeat", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -57,7 +57,7 @@ func (c *agentClient) Heartbeat(ctx context.Context, in *HeartbeatRequest, opts 
 // for forward compatibility
 type AgentServer interface {
 	Config(context.Context, *ConfigRequest) (*ConfigResponse, error)
-	Heartbeat(context.Context, *HeartbeatRequest) (*ConfigResponse, error)
+	Heartbeat(context.Context, *HeartbeatRequest) (*HeartbeatResponse, error)
 }
 
 // UnimplementedAgentServer should be embedded to have forward compatible implementations.
@@ -67,7 +67,7 @@ type UnimplementedAgentServer struct {
 func (UnimplementedAgentServer) Config(context.Context, *ConfigRequest) (*ConfigResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Config not implemented")
 }
-func (UnimplementedAgentServer) Heartbeat(context.Context, *HeartbeatRequest) (*ConfigResponse, error) {
+func (UnimplementedAgentServer) Heartbeat(context.Context, *HeartbeatRequest) (*HeartbeatResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Heartbeat not implemented")
 }
 
