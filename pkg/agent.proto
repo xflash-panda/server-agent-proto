@@ -34,8 +34,19 @@ message HeartbeatResponse {
   bool result = 2;
 }
 
+message SubmitRequest {
+  CommonParams params = 1;
+  bytes raw_data  = 2;
+  bytes raw_stats = 3;
+}
+
+message SubmitResponse {
+
+}
+
 service Agent
 {
   rpc Config(ConfigRequest) returns (ConfigResponse);
   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
+  rpc Submit(SubmitRequest) returns (SubmitResponse);
 }
