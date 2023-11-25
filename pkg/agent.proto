@@ -31,7 +31,7 @@ message HeartbeatRequest {
 }
 
 message HeartbeatResponse {
-  bool result = 2;
+  bool result = 1;
 }
 
 message SubmitRequest {
@@ -41,7 +41,7 @@ message SubmitRequest {
 }
 
 message SubmitResponse {
-
+  bool result = 1;
 }
 
 service Agent
