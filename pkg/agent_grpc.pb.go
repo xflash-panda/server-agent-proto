@@ -25,6 +25,7 @@ type AgentClient interface {
 	Config(ctx context.Context, in *ConfigRequest, opts ...grpc.CallOption) (*ConfigResponse, error)
 	Heartbeat(ctx context.Context, in *HeartbeatRequest, opts ...grpc.CallOption) (*HeartbeatResponse, error)
 	Submit(ctx context.Context, in *SubmitRequest, opts ...grpc.CallOption) (*SubmitResponse, error)
+	Users(ctx context.Context, in *UsersRequest, opts ...grpc.CallOption) (*UsersResponse, error)
 }
 
 type agentClient struct {
@@ -62,6 +63,15 @@ func (c *agentClient) Submit(ctx context.Context, in *SubmitRequest, opts ...grp
 	return out, nil
 }
 
+func (c *agentClient) Users(ctx context.Context, in *UsersRequest, opts ...grpc.CallOption) (*UsersResponse, error) {
+	out := new(UsersResponse)
+	err := c.cc.Invoke(ctx, "/pkg.Agent/Users", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AgentServer is the server API for Agent service.
 // All implementations should embed UnimplementedAgentServer
 // for forward compatibility
@@ -69,6 +79,7 @@ type AgentServer interface {
 	Config(context.Context, *ConfigRequest) (*ConfigResponse, error)
 	Heartbeat(context.Context, *HeartbeatRequest) (*HeartbeatResponse, error)
 	Submit(context.Context, *SubmitRequest) (*SubmitResponse, error)
+	Users(context.Context, *UsersRequest) (*UsersResponse, error)
 }
 
 // UnimplementedAgentServer should be embedded to have forward compatible implementations.
@@ -83,6 +94,9 @@ func (UnimplementedAgentServer) Heartbeat(context.Context, *HeartbeatRequest) (*
 }
 func (UnimplementedAgentServer) Submit(context.Context, *SubmitRequest) (*SubmitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Submit not implemented")
+}
+func (UnimplementedAgentServer) Users(context.Context, *UsersRequest) (*UsersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Users not implemented")
 }
 
 // UnsafeAgentServer may be embedded to opt out of forward compatibility for this service.
@@ -150,6 +164,24 @@ func _Agent_Submit_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Agent_Users_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UsersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AgentServer).Users(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pkg.Agent/Users",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AgentServer).Users(ctx, req.(*UsersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Agent_ServiceDesc is the grpc.ServiceDesc for Agent service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -168,6 +200,10 @@ var Agent_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Submit",
 			Handler:    _Agent_Submit_Handler,
+		},
+		{
+			MethodName: "Users",
+			Handler:    _Agent_Users_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

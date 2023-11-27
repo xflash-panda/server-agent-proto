@@ -44,9 +44,20 @@ message SubmitResponse {
   bool result = 1;
 }
 
+
+message UsersRequest {
+  CommonParams params = 1;
+}
+
+message UsersResponse {
+  bool result = 1;
+  bytes raw_data = 2;
+}
+
 service Agent
 {
   rpc Config(ConfigRequest) returns (ConfigResponse);
   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
   rpc Submit(SubmitRequest) returns (SubmitResponse);
+  rpc Users(UsersRequest) returns (UsersResponse);
 }
