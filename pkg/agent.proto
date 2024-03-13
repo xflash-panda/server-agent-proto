@@ -51,6 +51,7 @@ enum ChangeStatus {
 
 message UsersRequest {
   CommonParams params = 1;
+  optional string hash  = 2;
 }
 
 message UsersResponse {
