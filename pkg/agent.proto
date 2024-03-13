@@ -44,14 +44,19 @@ message SubmitResponse {
   bool result = 1;
 }
 
+enum ChangeStatus {
+  NOT_CHANGED = 0;
+  CHANGED = 1;
+}
 
 message UsersRequest {
   CommonParams params = 1;
 }
 
 message UsersResponse {
-  bool result = 1;
-  bytes raw_data = 2;
+  ChangeStatus status = 1;
+  optional bytes raw_data = 2;
+  optional string  hash = 3;
 }
 
 service Agent
