@@ -10,7 +10,7 @@ enum NodeType {
   VMESS = 2;
   HYSTERIA = 3;
   HYSTERIA2 = 4;
-  ANY = 5;
+  ANYTLS = 5;
 }
 
 message CommonParams {
