@@ -36,7 +36,8 @@ message RegisterResponse {
 }
 
 message UnregisterRequest {
-  int32 register_id = 1;
+  NodeType node_type = 1;
+  int32 register_id = 2;
 }
 
 message UnregisterResult {
@@ -44,7 +45,8 @@ message UnregisterResult {
 }
 
 message HeartbeatRequest {
-  int32 register_id = 1;
+  NodeType node_type = 1;
+  int32 register_id = 2;
 }
 
 message HeartbeatResponse {
@@ -52,18 +54,19 @@ message HeartbeatResponse {
 }
 
 message SubmitRequest {
-  int32 register_id = 1;
-  bytes raw_data  = 2;
-  bytes raw_stats = 3;
+  NodeType node_type = 1;
+  int32 register_id = 2;
+  bytes raw_data  = 3;
+  bytes raw_stats = 4;
 }
 
 message SubmitResponse {
   bool result = 1;
 }
 
-
 message UsersRequest {
-  int32 register_id = 1;
+  NodeType node_type = 1;
+  int32 register_id = 2;
 }
 message UsersResponse {
   bool result = 1;
