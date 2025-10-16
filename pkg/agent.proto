@@ -24,10 +24,11 @@ message ConfigResponse {
 }
 
 message RegisterRequest {
-  CommonParams params = 1;
-  string host_name = 2;
-  string port = 3;
-  string ip = 4;
+  int32 node_id = 1;
+  NodeType node_type = 2;
+  string host_name = 3;
+  string port = 4;
+  string ip = 5;
 }
 
 message RegisterResponse {
@@ -43,7 +44,7 @@ message UnregisterResult {
 }
 
 message HeartbeatRequest {
-  CommonParams params = 1;
+  int32 register_id = 1;
 }
 
 message HeartbeatResponse {
@@ -51,7 +52,7 @@ message HeartbeatResponse {
 }
 
 message SubmitRequest {
-  CommonParams params = 1;
+  int32 register_id = 1;
   bytes raw_data  = 2;
   bytes raw_stats = 3;
 }
