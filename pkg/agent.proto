@@ -10,15 +10,12 @@ enum NodeType {
   VMESS = 2;
   HYSTERIA = 3;
   HYSTERIA2 = 4;
-}
-
-message CommonParams {
-  int32 node_id = 1;
-  NodeType node_type = 2;
+  ANYTLS = 6;
 }
 
 message ConfigRequest {
-  CommonParams params = 1;
+  int32 node_id = 1;
+  NodeType node_type = 2;
 }
 
 message ConfigResponse {
@@ -26,8 +23,27 @@ message ConfigResponse {
   bytes raw_data = 2;
 }
 
+message RegisterRequest {
+  CommonParams params = 1;
+  string host_name = 2;
+  string port = 3;
+  string ip = 4;
+}
+
+message RegisterResponse {
+  bool result = 1;
+}
+
+message UnregisterRequest {
+  int32 register_id = 1;
+}
+
+message UnregisterResult {
+  bool result = 1;
+}
+
 message HeartbeatRequest {
-   CommonParams params = 1;
+  CommonParams params = 1;
 }
 
 message HeartbeatResponse {
@@ -46,9 +62,8 @@ message SubmitResponse {
 
 
 message UsersRequest {
-  CommonParams params = 1;
+  int32 register_id = 1;
 }
-
 message UsersResponse {
   bool result = 1;
   bytes raw_data = 2;
@@ -60,4 +75,6 @@ service Agent
   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
   rpc Submit(SubmitRequest) returns (SubmitResponse);
   rpc Users(UsersRequest) returns (UsersResponse);
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc Unregister(UnregisterRequest) returns (UnregisterResult);
 }
