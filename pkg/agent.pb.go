@@ -661,8 +661,7 @@ func (x *UsersRequest) GetRegisterId() int32 {
 
 type UsersResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Result        bool                   `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
-	RawData       []byte                 `protobuf:"bytes,2,opt,name=raw_data,json=rawData,proto3" json:"raw_data,omitempty"`
+	RawData       []byte                 `protobuf:"bytes,1,opt,name=raw_data,json=rawData,proto3" json:"raw_data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -695,13 +694,6 @@ func (x *UsersResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UsersResponse.ProtoReflect.Descriptor instead.
 func (*UsersResponse) Descriptor() ([]byte, []int) {
 	return file_pkg_agent_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *UsersResponse) GetResult() bool {
-	if x != nil {
-		return x.Result
-	}
-	return false
 }
 
 func (x *UsersResponse) GetRawData() []byte {
@@ -753,10 +745,9 @@ const file_pkg_agent_proto_rawDesc = "" +
 	"\fUsersRequest\x12*\n" +
 	"\tnode_type\x18\x01 \x01(\x0e2\r.pkg.NodeTypeR\bnodeType\x12\x1f\n" +
 	"\vregister_id\x18\x02 \x01(\x05R\n" +
-	"registerId\"B\n" +
-	"\rUsersResponse\x12\x16\n" +
-	"\x06result\x18\x01 \x01(\bR\x06result\x12\x19\n" +
-	"\braw_data\x18\x02 \x01(\fR\arawData*[\n" +
+	"registerId\"*\n" +
+	"\rUsersResponse\x12\x19\n" +
+	"\braw_data\x18\x01 \x01(\fR\arawData*[\n" +
 	"\bNodeType\x12\x0f\n" +
 	"\vSHADOWSOCKS\x10\x00\x12\n" +
 	"\n" +
