@@ -10,16 +10,12 @@ enum NodeType {
   VMESS = 2;
   HYSTERIA = 3;
   HYSTERIA2 = 4;
-  ANYTLS = 5;
-}
-
-message CommonParams {
-  int32 node_id = 1;
-  NodeType node_type = 2;
+  ANYTLS = 6;
 }
 
 message ConfigRequest {
-  CommonParams params = 1;
+  int32 node_id = 1;
+  NodeType node_type = 2;
 }
 
 message ConfigResponse {
@@ -27,8 +23,30 @@ message ConfigResponse {
   bytes raw_data = 2;
 }
 
+message RegisterRequest {
+  int32 node_id = 1;
+  NodeType node_type = 2;
+  string host_name = 3;
+  string port = 4;
+  string ip = 5;
+}
+
+message RegisterResponse {
+  bool result = 1;
+}
+
+message UnregisterRequest {
+  NodeType node_type = 1;
+  int32 register_id = 2;
+}
+
+message UnregisterResult {
+  bool result = 1;
+}
+
 message HeartbeatRequest {
-   CommonParams params = 1;
+  NodeType node_type = 1;
+  int32 register_id = 2;
 }
 
 message HeartbeatResponse {
@@ -36,29 +54,22 @@ message HeartbeatResponse {
 }
 
 message SubmitRequest {
-  CommonParams params = 1;
-  bytes raw_data  = 2;
-  bytes raw_stats = 3;
+  NodeType node_type = 1;
+  int32 register_id = 2;
+  bytes raw_data  = 3;
+  bytes raw_stats = 4;
 }
 
 message SubmitResponse {
   bool result = 1;
 }
 
-enum ChangeStatus {
-  NOT_CHANGED = 0;
-  CHANGED = 1;
-}
-
 message UsersRequest {
-  CommonParams params = 1;
-  optional string hash  = 2;
+  NodeType node_type = 1;
+  int32 register_id = 2;
 }
-
 message UsersResponse {
-  ChangeStatus status = 1;
-  optional bytes raw_data = 2;
-  optional string  hash = 3;
+  bytes raw_data = 1;
 }
 
 service Agent
@@ -67,4 +78,6 @@ service Agent
   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
   rpc Submit(SubmitRequest) returns (SubmitResponse);
   rpc Users(UsersRequest) returns (UsersResponse);
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc Unregister(UnregisterRequest) returns (UnregisterResult);
 }
