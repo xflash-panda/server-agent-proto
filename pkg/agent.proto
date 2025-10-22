@@ -32,7 +32,7 @@ message RegisterRequest {
 }
 
 message RegisterResponse {
-  bool result = 1;
+  int32 register_id = 1;
 }
 
 message UnregisterRequest {
