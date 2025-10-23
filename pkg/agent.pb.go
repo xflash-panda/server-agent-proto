@@ -261,7 +261,7 @@ func (x *RegisterRequest) GetIp() string {
 
 type RegisterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Result        bool                   `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	RegisterId    int32                  `protobuf:"varint,1,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -296,11 +296,11 @@ func (*RegisterResponse) Descriptor() ([]byte, []int) {
 	return file_pkg_agent_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *RegisterResponse) GetResult() bool {
+func (x *RegisterResponse) GetRegisterId() int32 {
 	if x != nil {
-		return x.Result
+		return x.RegisterId
 	}
-	return false
+	return 0
 }
 
 type UnregisterRequest struct {
@@ -719,9 +719,10 @@ const file_pkg_agent_proto_rawDesc = "" +
 	"\tnode_type\x18\x02 \x01(\x0e2\r.pkg.NodeTypeR\bnodeType\x12\x1b\n" +
 	"\thost_name\x18\x03 \x01(\tR\bhostName\x12\x12\n" +
 	"\x04port\x18\x04 \x01(\tR\x04port\x12\x0e\n" +
-	"\x02ip\x18\x05 \x01(\tR\x02ip\"*\n" +
-	"\x10RegisterResponse\x12\x16\n" +
-	"\x06result\x18\x01 \x01(\bR\x06result\"`\n" +
+	"\x02ip\x18\x05 \x01(\tR\x02ip\"3\n" +
+	"\x10RegisterResponse\x12\x1f\n" +
+	"\vregister_id\x18\x01 \x01(\x05R\n" +
+	"registerId\"`\n" +
 	"\x11UnregisterRequest\x12*\n" +
 	"\tnode_type\x18\x01 \x01(\x0e2\r.pkg.NodeTypeR\bnodeType\x12\x1f\n" +
 	"\vregister_id\x18\x02 \x01(\x05R\n" +
