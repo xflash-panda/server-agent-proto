@@ -8,6 +8,7 @@ package pkg
 
 import (
 	context "context"
+
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -16,7 +17,6 @@ import (
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
 // Requires gRPC-Go v1.64.0 or later.
-const _ = grpc.SupportPackageIsVersion9
 
 const (
 	Agent_Config_FullMethodName     = "/pkg.Agent/Config"
@@ -48,7 +48,7 @@ func NewAgentClient(cc grpc.ClientConnInterface) AgentClient {
 }
 
 func (c *agentClient) Config(ctx context.Context, in *ConfigRequest, opts ...grpc.CallOption) (*ConfigResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	cOpts := append([]grpc.CallOption{}, opts...)
 	out := new(ConfigResponse)
 	err := c.cc.Invoke(ctx, Agent_Config_FullMethodName, in, out, cOpts...)
 	if err != nil {
@@ -58,7 +58,7 @@ func (c *agentClient) Config(ctx context.Context, in *ConfigRequest, opts ...grp
 }
 
 func (c *agentClient) Heartbeat(ctx context.Context, in *HeartbeatRequest, opts ...grpc.CallOption) (*HeartbeatResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	cOpts := append([]grpc.CallOption{}, opts...)
 	out := new(HeartbeatResponse)
 	err := c.cc.Invoke(ctx, Agent_Heartbeat_FullMethodName, in, out, cOpts...)
 	if err != nil {
@@ -68,7 +68,7 @@ func (c *agentClient) Heartbeat(ctx context.Context, in *HeartbeatRequest, opts 
 }
 
 func (c *agentClient) Submit(ctx context.Context, in *SubmitRequest, opts ...grpc.CallOption) (*SubmitResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	cOpts := append([]grpc.CallOption{}, opts...)
 	out := new(SubmitResponse)
 	err := c.cc.Invoke(ctx, Agent_Submit_FullMethodName, in, out, cOpts...)
 	if err != nil {
@@ -78,7 +78,7 @@ func (c *agentClient) Submit(ctx context.Context, in *SubmitRequest, opts ...grp
 }
 
 func (c *agentClient) Users(ctx context.Context, in *UsersRequest, opts ...grpc.CallOption) (*UsersResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	cOpts := append([]grpc.CallOption{}, opts...)
 	out := new(UsersResponse)
 	err := c.cc.Invoke(ctx, Agent_Users_FullMethodName, in, out, cOpts...)
 	if err != nil {
@@ -88,7 +88,7 @@ func (c *agentClient) Users(ctx context.Context, in *UsersRequest, opts ...grpc.
 }
 
 func (c *agentClient) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	cOpts := append([]grpc.CallOption{}, opts...)
 	out := new(RegisterResponse)
 	err := c.cc.Invoke(ctx, Agent_Register_FullMethodName, in, out, cOpts...)
 	if err != nil {
@@ -98,7 +98,7 @@ func (c *agentClient) Register(ctx context.Context, in *RegisterRequest, opts ..
 }
 
 func (c *agentClient) Unregister(ctx context.Context, in *UnregisterRequest, opts ...grpc.CallOption) (*UnregisterResult, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	cOpts := append([]grpc.CallOption{}, opts...)
 	out := new(UnregisterResult)
 	err := c.cc.Invoke(ctx, Agent_Unregister_FullMethodName, in, out, cOpts...)
 	if err != nil {
