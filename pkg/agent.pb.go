@@ -705,7 +705,7 @@ func (x *UsersResponse) GetRawData() []byte {
 
 type VerifyRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	RegisterId    string                 `protobuf:"bytes,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
+	RegisterId    string                 `protobuf:"bytes,1,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -838,7 +838,7 @@ const file_agent_proto_rawDesc = "" +
 	"\rUsersResponse\x12\x19\n" +
 	"\braw_data\x18\x01 \x01(\fR\arawData\"0\n" +
 	"\rVerifyRequest\x12\x1f\n" +
-	"\vregister_id\x18\x02 \x01(\tR\n" +
+	"\vregister_id\x18\x01 \x01(\tR\n" +
 	"registerId\"(\n" +
 	"\x0eVerifyResponse\x12\x16\n" +
 	"\x06result\x18\x01 \x01(\bR\x06result*[\n" +
