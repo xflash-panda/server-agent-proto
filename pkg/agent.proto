@@ -73,7 +73,8 @@ message UsersResponse {
 }
 
 message VerifyRequest {
-  string register_id = 1;
+  NodeType node_type = 1;
+  string register_id = 2;
 }
 message VerifyResponse {
   bool result = 1;

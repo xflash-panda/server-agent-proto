@@ -705,7 +705,8 @@ func (x *UsersResponse) GetRawData() []byte {
 
 type VerifyRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	RegisterId    string                 `protobuf:"bytes,1,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
+	NodeType      NodeType               `protobuf:"varint,1,opt,name=node_type,json=nodeType,proto3,enum=pkg.NodeType" json:"node_type,omitempty"`
+	RegisterId    string                 `protobuf:"bytes,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -738,6 +739,13 @@ func (x *VerifyRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use VerifyRequest.ProtoReflect.Descriptor instead.
 func (*VerifyRequest) Descriptor() ([]byte, []int) {
 	return file_agent_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *VerifyRequest) GetNodeType() NodeType {
+	if x != nil {
+		return x.NodeType
+	}
+	return NodeType_SHADOWSOCKS
 }
 
 func (x *VerifyRequest) GetRegisterId() string {
@@ -836,9 +844,10 @@ const file_agent_proto_rawDesc = "" +
 	"\vregister_id\x18\x02 \x01(\tR\n" +
 	"registerId\"*\n" +
 	"\rUsersResponse\x12\x19\n" +
-	"\braw_data\x18\x01 \x01(\fR\arawData\"0\n" +
-	"\rVerifyRequest\x12\x1f\n" +
-	"\vregister_id\x18\x01 \x01(\tR\n" +
+	"\braw_data\x18\x01 \x01(\fR\arawData\"\\\n" +
+	"\rVerifyRequest\x12*\n" +
+	"\tnode_type\x18\x01 \x01(\x0e2\r.pkg.NodeTypeR\bnodeType\x12\x1f\n" +
+	"\vregister_id\x18\x02 \x01(\tR\n" +
 	"registerId\"(\n" +
 	"\x0eVerifyResponse\x12\x16\n" +
 	"\x06result\x18\x01 \x01(\bR\x06result*[\n" +
@@ -899,25 +908,26 @@ var file_agent_proto_depIdxs = []int32{
 	0,  // 3: pkg.HeartbeatRequest.node_type:type_name -> pkg.NodeType
 	0,  // 4: pkg.SubmitRequest.node_type:type_name -> pkg.NodeType
 	0,  // 5: pkg.UsersRequest.node_type:type_name -> pkg.NodeType
-	1,  // 6: pkg.Agent.Config:input_type -> pkg.ConfigRequest
-	7,  // 7: pkg.Agent.Heartbeat:input_type -> pkg.HeartbeatRequest
-	9,  // 8: pkg.Agent.Submit:input_type -> pkg.SubmitRequest
-	11, // 9: pkg.Agent.Users:input_type -> pkg.UsersRequest
-	3,  // 10: pkg.Agent.Register:input_type -> pkg.RegisterRequest
-	5,  // 11: pkg.Agent.Unregister:input_type -> pkg.UnregisterRequest
-	13, // 12: pkg.Agent.Verify:input_type -> pkg.VerifyRequest
-	2,  // 13: pkg.Agent.Config:output_type -> pkg.ConfigResponse
-	8,  // 14: pkg.Agent.Heartbeat:output_type -> pkg.HeartbeatResponse
-	10, // 15: pkg.Agent.Submit:output_type -> pkg.SubmitResponse
-	12, // 16: pkg.Agent.Users:output_type -> pkg.UsersResponse
-	4,  // 17: pkg.Agent.Register:output_type -> pkg.RegisterResponse
-	6,  // 18: pkg.Agent.Unregister:output_type -> pkg.UnregisterResult
-	14, // 19: pkg.Agent.Verify:output_type -> pkg.VerifyResponse
-	13, // [13:20] is the sub-list for method output_type
-	6,  // [6:13] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	0,  // 6: pkg.VerifyRequest.node_type:type_name -> pkg.NodeType
+	1,  // 7: pkg.Agent.Config:input_type -> pkg.ConfigRequest
+	7,  // 8: pkg.Agent.Heartbeat:input_type -> pkg.HeartbeatRequest
+	9,  // 9: pkg.Agent.Submit:input_type -> pkg.SubmitRequest
+	11, // 10: pkg.Agent.Users:input_type -> pkg.UsersRequest
+	3,  // 11: pkg.Agent.Register:input_type -> pkg.RegisterRequest
+	5,  // 12: pkg.Agent.Unregister:input_type -> pkg.UnregisterRequest
+	13, // 13: pkg.Agent.Verify:input_type -> pkg.VerifyRequest
+	2,  // 14: pkg.Agent.Config:output_type -> pkg.ConfigResponse
+	8,  // 15: pkg.Agent.Heartbeat:output_type -> pkg.HeartbeatResponse
+	10, // 16: pkg.Agent.Submit:output_type -> pkg.SubmitResponse
+	12, // 17: pkg.Agent.Users:output_type -> pkg.UsersResponse
+	4,  // 18: pkg.Agent.Register:output_type -> pkg.RegisterResponse
+	6,  // 19: pkg.Agent.Unregister:output_type -> pkg.UnregisterResult
+	14, // 20: pkg.Agent.Verify:output_type -> pkg.VerifyResponse
+	14, // [14:21] is the sub-list for method output_type
+	7,  // [7:14] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_agent_proto_init() }
