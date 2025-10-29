@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        v6.32.1
-// source: pkg/agent.proto
+// source: agent.proto
 
 package pkg
 
@@ -63,11 +63,11 @@ func (x NodeType) String() string {
 }
 
 func (NodeType) Descriptor() protoreflect.EnumDescriptor {
-	return file_pkg_agent_proto_enumTypes[0].Descriptor()
+	return file_agent_proto_enumTypes[0].Descriptor()
 }
 
 func (NodeType) Type() protoreflect.EnumType {
-	return &file_pkg_agent_proto_enumTypes[0]
+	return &file_agent_proto_enumTypes[0]
 }
 
 func (x NodeType) Number() protoreflect.EnumNumber {
@@ -76,7 +76,7 @@ func (x NodeType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use NodeType.Descriptor instead.
 func (NodeType) EnumDescriptor() ([]byte, []int) {
-	return file_pkg_agent_proto_rawDescGZIP(), []int{0}
+	return file_agent_proto_rawDescGZIP(), []int{0}
 }
 
 type ConfigRequest struct {
@@ -89,7 +89,7 @@ type ConfigRequest struct {
 
 func (x *ConfigRequest) Reset() {
 	*x = ConfigRequest{}
-	mi := &file_pkg_agent_proto_msgTypes[0]
+	mi := &file_agent_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -101,7 +101,7 @@ func (x *ConfigRequest) String() string {
 func (*ConfigRequest) ProtoMessage() {}
 
 func (x *ConfigRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_agent_proto_msgTypes[0]
+	mi := &file_agent_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -114,7 +114,7 @@ func (x *ConfigRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigRequest.ProtoReflect.Descriptor instead.
 func (*ConfigRequest) Descriptor() ([]byte, []int) {
-	return file_pkg_agent_proto_rawDescGZIP(), []int{0}
+	return file_agent_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ConfigRequest) GetNodeId() int32 {
@@ -141,7 +141,7 @@ type ConfigResponse struct {
 
 func (x *ConfigResponse) Reset() {
 	*x = ConfigResponse{}
-	mi := &file_pkg_agent_proto_msgTypes[1]
+	mi := &file_agent_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -153,7 +153,7 @@ func (x *ConfigResponse) String() string {
 func (*ConfigResponse) ProtoMessage() {}
 
 func (x *ConfigResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_agent_proto_msgTypes[1]
+	mi := &file_agent_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -166,7 +166,7 @@ func (x *ConfigResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigResponse.ProtoReflect.Descriptor instead.
 func (*ConfigResponse) Descriptor() ([]byte, []int) {
-	return file_pkg_agent_proto_rawDescGZIP(), []int{1}
+	return file_agent_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ConfigResponse) GetResult() bool {
@@ -196,7 +196,7 @@ type RegisterRequest struct {
 
 func (x *RegisterRequest) Reset() {
 	*x = RegisterRequest{}
-	mi := &file_pkg_agent_proto_msgTypes[2]
+	mi := &file_agent_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -208,7 +208,7 @@ func (x *RegisterRequest) String() string {
 func (*RegisterRequest) ProtoMessage() {}
 
 func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_agent_proto_msgTypes[2]
+	mi := &file_agent_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -221,7 +221,7 @@ func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterRequest.ProtoReflect.Descriptor instead.
 func (*RegisterRequest) Descriptor() ([]byte, []int) {
-	return file_pkg_agent_proto_rawDescGZIP(), []int{2}
+	return file_agent_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *RegisterRequest) GetNodeId() int32 {
@@ -261,14 +261,14 @@ func (x *RegisterRequest) GetIp() string {
 
 type RegisterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	RegisterId    int32                  `protobuf:"varint,1,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
+	RegisterId    string                 `protobuf:"bytes,1,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *RegisterResponse) Reset() {
 	*x = RegisterResponse{}
-	mi := &file_pkg_agent_proto_msgTypes[3]
+	mi := &file_agent_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -280,7 +280,7 @@ func (x *RegisterResponse) String() string {
 func (*RegisterResponse) ProtoMessage() {}
 
 func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_agent_proto_msgTypes[3]
+	mi := &file_agent_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -293,27 +293,27 @@ func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterResponse.ProtoReflect.Descriptor instead.
 func (*RegisterResponse) Descriptor() ([]byte, []int) {
-	return file_pkg_agent_proto_rawDescGZIP(), []int{3}
+	return file_agent_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *RegisterResponse) GetRegisterId() int32 {
+func (x *RegisterResponse) GetRegisterId() string {
 	if x != nil {
 		return x.RegisterId
 	}
-	return 0
+	return ""
 }
 
 type UnregisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	NodeType      NodeType               `protobuf:"varint,1,opt,name=node_type,json=nodeType,proto3,enum=pkg.NodeType" json:"node_type,omitempty"`
-	RegisterId    int32                  `protobuf:"varint,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
+	RegisterId    string                 `protobuf:"bytes,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UnregisterRequest) Reset() {
 	*x = UnregisterRequest{}
-	mi := &file_pkg_agent_proto_msgTypes[4]
+	mi := &file_agent_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -325,7 +325,7 @@ func (x *UnregisterRequest) String() string {
 func (*UnregisterRequest) ProtoMessage() {}
 
 func (x *UnregisterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_agent_proto_msgTypes[4]
+	mi := &file_agent_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -338,7 +338,7 @@ func (x *UnregisterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnregisterRequest.ProtoReflect.Descriptor instead.
 func (*UnregisterRequest) Descriptor() ([]byte, []int) {
-	return file_pkg_agent_proto_rawDescGZIP(), []int{4}
+	return file_agent_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *UnregisterRequest) GetNodeType() NodeType {
@@ -348,11 +348,11 @@ func (x *UnregisterRequest) GetNodeType() NodeType {
 	return NodeType_SHADOWSOCKS
 }
 
-func (x *UnregisterRequest) GetRegisterId() int32 {
+func (x *UnregisterRequest) GetRegisterId() string {
 	if x != nil {
 		return x.RegisterId
 	}
-	return 0
+	return ""
 }
 
 type UnregisterResult struct {
@@ -364,7 +364,7 @@ type UnregisterResult struct {
 
 func (x *UnregisterResult) Reset() {
 	*x = UnregisterResult{}
-	mi := &file_pkg_agent_proto_msgTypes[5]
+	mi := &file_agent_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -376,7 +376,7 @@ func (x *UnregisterResult) String() string {
 func (*UnregisterResult) ProtoMessage() {}
 
 func (x *UnregisterResult) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_agent_proto_msgTypes[5]
+	mi := &file_agent_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -389,7 +389,7 @@ func (x *UnregisterResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnregisterResult.ProtoReflect.Descriptor instead.
 func (*UnregisterResult) Descriptor() ([]byte, []int) {
-	return file_pkg_agent_proto_rawDescGZIP(), []int{5}
+	return file_agent_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *UnregisterResult) GetResult() bool {
@@ -402,14 +402,14 @@ func (x *UnregisterResult) GetResult() bool {
 type HeartbeatRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	NodeType      NodeType               `protobuf:"varint,1,opt,name=node_type,json=nodeType,proto3,enum=pkg.NodeType" json:"node_type,omitempty"`
-	RegisterId    int32                  `protobuf:"varint,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
+	RegisterId    string                 `protobuf:"bytes,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *HeartbeatRequest) Reset() {
 	*x = HeartbeatRequest{}
-	mi := &file_pkg_agent_proto_msgTypes[6]
+	mi := &file_agent_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -421,7 +421,7 @@ func (x *HeartbeatRequest) String() string {
 func (*HeartbeatRequest) ProtoMessage() {}
 
 func (x *HeartbeatRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_agent_proto_msgTypes[6]
+	mi := &file_agent_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -434,7 +434,7 @@ func (x *HeartbeatRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HeartbeatRequest.ProtoReflect.Descriptor instead.
 func (*HeartbeatRequest) Descriptor() ([]byte, []int) {
-	return file_pkg_agent_proto_rawDescGZIP(), []int{6}
+	return file_agent_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *HeartbeatRequest) GetNodeType() NodeType {
@@ -444,11 +444,11 @@ func (x *HeartbeatRequest) GetNodeType() NodeType {
 	return NodeType_SHADOWSOCKS
 }
 
-func (x *HeartbeatRequest) GetRegisterId() int32 {
+func (x *HeartbeatRequest) GetRegisterId() string {
 	if x != nil {
 		return x.RegisterId
 	}
-	return 0
+	return ""
 }
 
 type HeartbeatResponse struct {
@@ -460,7 +460,7 @@ type HeartbeatResponse struct {
 
 func (x *HeartbeatResponse) Reset() {
 	*x = HeartbeatResponse{}
-	mi := &file_pkg_agent_proto_msgTypes[7]
+	mi := &file_agent_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -472,7 +472,7 @@ func (x *HeartbeatResponse) String() string {
 func (*HeartbeatResponse) ProtoMessage() {}
 
 func (x *HeartbeatResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_agent_proto_msgTypes[7]
+	mi := &file_agent_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -485,7 +485,7 @@ func (x *HeartbeatResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HeartbeatResponse.ProtoReflect.Descriptor instead.
 func (*HeartbeatResponse) Descriptor() ([]byte, []int) {
-	return file_pkg_agent_proto_rawDescGZIP(), []int{7}
+	return file_agent_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *HeartbeatResponse) GetResult() bool {
@@ -498,7 +498,7 @@ func (x *HeartbeatResponse) GetResult() bool {
 type SubmitRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	NodeType      NodeType               `protobuf:"varint,1,opt,name=node_type,json=nodeType,proto3,enum=pkg.NodeType" json:"node_type,omitempty"`
-	RegisterId    int32                  `protobuf:"varint,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
+	RegisterId    string                 `protobuf:"bytes,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
 	RawData       []byte                 `protobuf:"bytes,3,opt,name=raw_data,json=rawData,proto3" json:"raw_data,omitempty"`
 	RawStats      []byte                 `protobuf:"bytes,4,opt,name=raw_stats,json=rawStats,proto3" json:"raw_stats,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -507,7 +507,7 @@ type SubmitRequest struct {
 
 func (x *SubmitRequest) Reset() {
 	*x = SubmitRequest{}
-	mi := &file_pkg_agent_proto_msgTypes[8]
+	mi := &file_agent_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -519,7 +519,7 @@ func (x *SubmitRequest) String() string {
 func (*SubmitRequest) ProtoMessage() {}
 
 func (x *SubmitRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_agent_proto_msgTypes[8]
+	mi := &file_agent_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -532,7 +532,7 @@ func (x *SubmitRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubmitRequest.ProtoReflect.Descriptor instead.
 func (*SubmitRequest) Descriptor() ([]byte, []int) {
-	return file_pkg_agent_proto_rawDescGZIP(), []int{8}
+	return file_agent_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *SubmitRequest) GetNodeType() NodeType {
@@ -542,11 +542,11 @@ func (x *SubmitRequest) GetNodeType() NodeType {
 	return NodeType_SHADOWSOCKS
 }
 
-func (x *SubmitRequest) GetRegisterId() int32 {
+func (x *SubmitRequest) GetRegisterId() string {
 	if x != nil {
 		return x.RegisterId
 	}
-	return 0
+	return ""
 }
 
 func (x *SubmitRequest) GetRawData() []byte {
@@ -572,7 +572,7 @@ type SubmitResponse struct {
 
 func (x *SubmitResponse) Reset() {
 	*x = SubmitResponse{}
-	mi := &file_pkg_agent_proto_msgTypes[9]
+	mi := &file_agent_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -584,7 +584,7 @@ func (x *SubmitResponse) String() string {
 func (*SubmitResponse) ProtoMessage() {}
 
 func (x *SubmitResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_agent_proto_msgTypes[9]
+	mi := &file_agent_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -597,7 +597,7 @@ func (x *SubmitResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubmitResponse.ProtoReflect.Descriptor instead.
 func (*SubmitResponse) Descriptor() ([]byte, []int) {
-	return file_pkg_agent_proto_rawDescGZIP(), []int{9}
+	return file_agent_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *SubmitResponse) GetResult() bool {
@@ -610,14 +610,14 @@ func (x *SubmitResponse) GetResult() bool {
 type UsersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	NodeType      NodeType               `protobuf:"varint,1,opt,name=node_type,json=nodeType,proto3,enum=pkg.NodeType" json:"node_type,omitempty"`
-	RegisterId    int32                  `protobuf:"varint,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
+	RegisterId    string                 `protobuf:"bytes,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UsersRequest) Reset() {
 	*x = UsersRequest{}
-	mi := &file_pkg_agent_proto_msgTypes[10]
+	mi := &file_agent_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -629,7 +629,7 @@ func (x *UsersRequest) String() string {
 func (*UsersRequest) ProtoMessage() {}
 
 func (x *UsersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_agent_proto_msgTypes[10]
+	mi := &file_agent_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -642,7 +642,7 @@ func (x *UsersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UsersRequest.ProtoReflect.Descriptor instead.
 func (*UsersRequest) Descriptor() ([]byte, []int) {
-	return file_pkg_agent_proto_rawDescGZIP(), []int{10}
+	return file_agent_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *UsersRequest) GetNodeType() NodeType {
@@ -652,11 +652,11 @@ func (x *UsersRequest) GetNodeType() NodeType {
 	return NodeType_SHADOWSOCKS
 }
 
-func (x *UsersRequest) GetRegisterId() int32 {
+func (x *UsersRequest) GetRegisterId() string {
 	if x != nil {
 		return x.RegisterId
 	}
-	return 0
+	return ""
 }
 
 type UsersResponse struct {
@@ -668,7 +668,7 @@ type UsersResponse struct {
 
 func (x *UsersResponse) Reset() {
 	*x = UsersResponse{}
-	mi := &file_pkg_agent_proto_msgTypes[11]
+	mi := &file_agent_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -680,7 +680,7 @@ func (x *UsersResponse) String() string {
 func (*UsersResponse) ProtoMessage() {}
 
 func (x *UsersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_pkg_agent_proto_msgTypes[11]
+	mi := &file_agent_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -693,7 +693,7 @@ func (x *UsersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UsersResponse.ProtoReflect.Descriptor instead.
 func (*UsersResponse) Descriptor() ([]byte, []int) {
-	return file_pkg_agent_proto_rawDescGZIP(), []int{11}
+	return file_agent_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *UsersResponse) GetRawData() []byte {
@@ -703,11 +703,99 @@ func (x *UsersResponse) GetRawData() []byte {
 	return nil
 }
 
-var File_pkg_agent_proto protoreflect.FileDescriptor
+type VerifyRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	RegisterId    string                 `protobuf:"bytes,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
 
-const file_pkg_agent_proto_rawDesc = "" +
+func (x *VerifyRequest) Reset() {
+	*x = VerifyRequest{}
+	mi := &file_agent_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VerifyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyRequest) ProtoMessage() {}
+
+func (x *VerifyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyRequest.ProtoReflect.Descriptor instead.
+func (*VerifyRequest) Descriptor() ([]byte, []int) {
+	return file_agent_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *VerifyRequest) GetRegisterId() string {
+	if x != nil {
+		return x.RegisterId
+	}
+	return ""
+}
+
+type VerifyResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Result        bool                   `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VerifyResponse) Reset() {
+	*x = VerifyResponse{}
+	mi := &file_agent_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VerifyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyResponse) ProtoMessage() {}
+
+func (x *VerifyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_agent_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyResponse.ProtoReflect.Descriptor instead.
+func (*VerifyResponse) Descriptor() ([]byte, []int) {
+	return file_agent_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *VerifyResponse) GetResult() bool {
+	if x != nil {
+		return x.Result
+	}
+	return false
+}
+
+var File_agent_proto protoreflect.FileDescriptor
+
+const file_agent_proto_rawDesc = "" +
 	"\n" +
-	"\x0fpkg/agent.proto\x12\x03pkg\"T\n" +
+	"\vagent.proto\x12\x03pkg\"T\n" +
 	"\rConfigRequest\x12\x17\n" +
 	"\anode_id\x18\x01 \x01(\x05R\x06nodeId\x12*\n" +
 	"\tnode_type\x18\x02 \x01(\x0e2\r.pkg.NodeTypeR\bnodeType\"C\n" +
@@ -721,23 +809,23 @@ const file_pkg_agent_proto_rawDesc = "" +
 	"\x04port\x18\x04 \x01(\tR\x04port\x12\x0e\n" +
 	"\x02ip\x18\x05 \x01(\tR\x02ip\"3\n" +
 	"\x10RegisterResponse\x12\x1f\n" +
-	"\vregister_id\x18\x01 \x01(\x05R\n" +
+	"\vregister_id\x18\x01 \x01(\tR\n" +
 	"registerId\"`\n" +
 	"\x11UnregisterRequest\x12*\n" +
 	"\tnode_type\x18\x01 \x01(\x0e2\r.pkg.NodeTypeR\bnodeType\x12\x1f\n" +
-	"\vregister_id\x18\x02 \x01(\x05R\n" +
+	"\vregister_id\x18\x02 \x01(\tR\n" +
 	"registerId\"*\n" +
 	"\x10UnregisterResult\x12\x16\n" +
 	"\x06result\x18\x01 \x01(\bR\x06result\"_\n" +
 	"\x10HeartbeatRequest\x12*\n" +
 	"\tnode_type\x18\x01 \x01(\x0e2\r.pkg.NodeTypeR\bnodeType\x12\x1f\n" +
-	"\vregister_id\x18\x02 \x01(\x05R\n" +
+	"\vregister_id\x18\x02 \x01(\tR\n" +
 	"registerId\"+\n" +
 	"\x11HeartbeatResponse\x12\x16\n" +
 	"\x06result\x18\x01 \x01(\bR\x06result\"\x94\x01\n" +
 	"\rSubmitRequest\x12*\n" +
 	"\tnode_type\x18\x01 \x01(\x0e2\r.pkg.NodeTypeR\bnodeType\x12\x1f\n" +
-	"\vregister_id\x18\x02 \x01(\x05R\n" +
+	"\vregister_id\x18\x02 \x01(\tR\n" +
 	"registerId\x12\x19\n" +
 	"\braw_data\x18\x03 \x01(\fR\arawData\x12\x1b\n" +
 	"\traw_stats\x18\x04 \x01(\fR\brawStats\"(\n" +
@@ -745,10 +833,15 @@ const file_pkg_agent_proto_rawDesc = "" +
 	"\x06result\x18\x01 \x01(\bR\x06result\"[\n" +
 	"\fUsersRequest\x12*\n" +
 	"\tnode_type\x18\x01 \x01(\x0e2\r.pkg.NodeTypeR\bnodeType\x12\x1f\n" +
-	"\vregister_id\x18\x02 \x01(\x05R\n" +
+	"\vregister_id\x18\x02 \x01(\tR\n" +
 	"registerId\"*\n" +
 	"\rUsersResponse\x12\x19\n" +
-	"\braw_data\x18\x01 \x01(\fR\arawData*[\n" +
+	"\braw_data\x18\x01 \x01(\fR\arawData\"0\n" +
+	"\rVerifyRequest\x12\x1f\n" +
+	"\vregister_id\x18\x02 \x01(\tR\n" +
+	"registerId\"(\n" +
+	"\x0eVerifyResponse\x12\x16\n" +
+	"\x06result\x18\x01 \x01(\bR\x06result*[\n" +
 	"\bNodeType\x12\x0f\n" +
 	"\vSHADOWSOCKS\x10\x00\x12\n" +
 	"\n" +
@@ -757,7 +850,7 @@ const file_pkg_agent_proto_rawDesc = "" +
 	"\bHYSTERIA\x10\x03\x12\r\n" +
 	"\tHYSTERIA2\x10\x04\x12\n" +
 	"\n" +
-	"\x06ANYTLS\x10\x062\xcf\x02\n" +
+	"\x06ANYTLS\x10\x062\x82\x03\n" +
 	"\x05Agent\x121\n" +
 	"\x06Config\x12\x12.pkg.ConfigRequest\x1a\x13.pkg.ConfigResponse\x12:\n" +
 	"\tHeartbeat\x12\x15.pkg.HeartbeatRequest\x1a\x16.pkg.HeartbeatResponse\x121\n" +
@@ -765,23 +858,24 @@ const file_pkg_agent_proto_rawDesc = "" +
 	"\x05Users\x12\x11.pkg.UsersRequest\x1a\x12.pkg.UsersResponse\x127\n" +
 	"\bRegister\x12\x14.pkg.RegisterRequest\x1a\x15.pkg.RegisterResponse\x12;\n" +
 	"\n" +
-	"Unregister\x12\x16.pkg.UnregisterRequest\x1a\x15.pkg.UnregisterResultB0Z.github.com/xflash-panda/server-agent-proto/pkgb\x06proto3"
+	"Unregister\x12\x16.pkg.UnregisterRequest\x1a\x15.pkg.UnregisterResult\x121\n" +
+	"\x06Verify\x12\x12.pkg.VerifyRequest\x1a\x13.pkg.VerifyResponseB0Z.github.com/xflash-panda/server-agent-proto/pkgb\x06proto3"
 
 var (
-	file_pkg_agent_proto_rawDescOnce sync.Once
-	file_pkg_agent_proto_rawDescData []byte
+	file_agent_proto_rawDescOnce sync.Once
+	file_agent_proto_rawDescData []byte
 )
 
-func file_pkg_agent_proto_rawDescGZIP() []byte {
-	file_pkg_agent_proto_rawDescOnce.Do(func() {
-		file_pkg_agent_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_pkg_agent_proto_rawDesc), len(file_pkg_agent_proto_rawDesc)))
+func file_agent_proto_rawDescGZIP() []byte {
+	file_agent_proto_rawDescOnce.Do(func() {
+		file_agent_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_agent_proto_rawDesc), len(file_agent_proto_rawDesc)))
 	})
-	return file_pkg_agent_proto_rawDescData
+	return file_agent_proto_rawDescData
 }
 
-var file_pkg_agent_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_pkg_agent_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
-var file_pkg_agent_proto_goTypes = []any{
+var file_agent_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_agent_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_agent_proto_goTypes = []any{
 	(NodeType)(0),             // 0: pkg.NodeType
 	(*ConfigRequest)(nil),     // 1: pkg.ConfigRequest
 	(*ConfigResponse)(nil),    // 2: pkg.ConfigResponse
@@ -795,8 +889,10 @@ var file_pkg_agent_proto_goTypes = []any{
 	(*SubmitResponse)(nil),    // 10: pkg.SubmitResponse
 	(*UsersRequest)(nil),      // 11: pkg.UsersRequest
 	(*UsersResponse)(nil),     // 12: pkg.UsersResponse
+	(*VerifyRequest)(nil),     // 13: pkg.VerifyRequest
+	(*VerifyResponse)(nil),    // 14: pkg.VerifyResponse
 }
-var file_pkg_agent_proto_depIdxs = []int32{
+var file_agent_proto_depIdxs = []int32{
 	0,  // 0: pkg.ConfigRequest.node_type:type_name -> pkg.NodeType
 	0,  // 1: pkg.RegisterRequest.node_type:type_name -> pkg.NodeType
 	0,  // 2: pkg.UnregisterRequest.node_type:type_name -> pkg.NodeType
@@ -809,40 +905,42 @@ var file_pkg_agent_proto_depIdxs = []int32{
 	11, // 9: pkg.Agent.Users:input_type -> pkg.UsersRequest
 	3,  // 10: pkg.Agent.Register:input_type -> pkg.RegisterRequest
 	5,  // 11: pkg.Agent.Unregister:input_type -> pkg.UnregisterRequest
-	2,  // 12: pkg.Agent.Config:output_type -> pkg.ConfigResponse
-	8,  // 13: pkg.Agent.Heartbeat:output_type -> pkg.HeartbeatResponse
-	10, // 14: pkg.Agent.Submit:output_type -> pkg.SubmitResponse
-	12, // 15: pkg.Agent.Users:output_type -> pkg.UsersResponse
-	4,  // 16: pkg.Agent.Register:output_type -> pkg.RegisterResponse
-	6,  // 17: pkg.Agent.Unregister:output_type -> pkg.UnregisterResult
-	12, // [12:18] is the sub-list for method output_type
-	6,  // [6:12] is the sub-list for method input_type
+	13, // 12: pkg.Agent.Verify:input_type -> pkg.VerifyRequest
+	2,  // 13: pkg.Agent.Config:output_type -> pkg.ConfigResponse
+	8,  // 14: pkg.Agent.Heartbeat:output_type -> pkg.HeartbeatResponse
+	10, // 15: pkg.Agent.Submit:output_type -> pkg.SubmitResponse
+	12, // 16: pkg.Agent.Users:output_type -> pkg.UsersResponse
+	4,  // 17: pkg.Agent.Register:output_type -> pkg.RegisterResponse
+	6,  // 18: pkg.Agent.Unregister:output_type -> pkg.UnregisterResult
+	14, // 19: pkg.Agent.Verify:output_type -> pkg.VerifyResponse
+	13, // [13:20] is the sub-list for method output_type
+	6,  // [6:13] is the sub-list for method input_type
 	6,  // [6:6] is the sub-list for extension type_name
 	6,  // [6:6] is the sub-list for extension extendee
 	0,  // [0:6] is the sub-list for field type_name
 }
 
-func init() { file_pkg_agent_proto_init() }
-func file_pkg_agent_proto_init() {
-	if File_pkg_agent_proto != nil {
+func init() { file_agent_proto_init() }
+func file_agent_proto_init() {
+	if File_agent_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_pkg_agent_proto_rawDesc), len(file_pkg_agent_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_agent_proto_rawDesc), len(file_agent_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   12,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_pkg_agent_proto_goTypes,
-		DependencyIndexes: file_pkg_agent_proto_depIdxs,
-		EnumInfos:         file_pkg_agent_proto_enumTypes,
-		MessageInfos:      file_pkg_agent_proto_msgTypes,
+		GoTypes:           file_agent_proto_goTypes,
+		DependencyIndexes: file_agent_proto_depIdxs,
+		EnumInfos:         file_agent_proto_enumTypes,
+		MessageInfos:      file_agent_proto_msgTypes,
 	}.Build()
-	File_pkg_agent_proto = out.File
-	file_pkg_agent_proto_goTypes = nil
-	file_pkg_agent_proto_depIdxs = nil
+	File_agent_proto = out.File
+	file_agent_proto_goTypes = nil
+	file_agent_proto_depIdxs = nil
 }

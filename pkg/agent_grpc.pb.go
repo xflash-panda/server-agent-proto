@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v6.32.1
-// source: pkg/agent.proto
+// source: agent.proto
 
 package pkg
 
@@ -25,6 +25,7 @@ const (
 	Agent_Users_FullMethodName      = "/pkg.Agent/Users"
 	Agent_Register_FullMethodName   = "/pkg.Agent/Register"
 	Agent_Unregister_FullMethodName = "/pkg.Agent/Unregister"
+	Agent_Verify_FullMethodName     = "/pkg.Agent/Verify"
 )
 
 // AgentClient is the client API for Agent service.
@@ -37,6 +38,7 @@ type AgentClient interface {
 	Users(ctx context.Context, in *UsersRequest, opts ...grpc.CallOption) (*UsersResponse, error)
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	Unregister(ctx context.Context, in *UnregisterRequest, opts ...grpc.CallOption) (*UnregisterResult, error)
+	Verify(ctx context.Context, in *VerifyRequest, opts ...grpc.CallOption) (*VerifyResponse, error)
 }
 
 type agentClient struct {
@@ -107,6 +109,16 @@ func (c *agentClient) Unregister(ctx context.Context, in *UnregisterRequest, opt
 	return out, nil
 }
 
+func (c *agentClient) Verify(ctx context.Context, in *VerifyRequest, opts ...grpc.CallOption) (*VerifyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(VerifyResponse)
+	err := c.cc.Invoke(ctx, Agent_Verify_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AgentServer is the server API for Agent service.
 // All implementations must embed UnimplementedAgentServer
 // for forward compatibility.
@@ -117,6 +129,7 @@ type AgentServer interface {
 	Users(context.Context, *UsersRequest) (*UsersResponse, error)
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	Unregister(context.Context, *UnregisterRequest) (*UnregisterResult, error)
+	Verify(context.Context, *VerifyRequest) (*VerifyResponse, error)
 	mustEmbedUnimplementedAgentServer()
 }
 
@@ -144,6 +157,9 @@ func (UnimplementedAgentServer) Register(context.Context, *RegisterRequest) (*Re
 }
 func (UnimplementedAgentServer) Unregister(context.Context, *UnregisterRequest) (*UnregisterResult, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Unregister not implemented")
+}
+func (UnimplementedAgentServer) Verify(context.Context, *VerifyRequest) (*VerifyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Verify not implemented")
 }
 func (UnimplementedAgentServer) mustEmbedUnimplementedAgentServer() {}
 func (UnimplementedAgentServer) testEmbeddedByValue()               {}
@@ -274,6 +290,24 @@ func _Agent_Unregister_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Agent_Verify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VerifyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AgentServer).Verify(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Agent_Verify_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AgentServer).Verify(ctx, req.(*VerifyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Agent_ServiceDesc is the grpc.ServiceDesc for Agent service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -305,7 +339,11 @@ var Agent_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "Unregister",
 			Handler:    _Agent_Unregister_Handler,
 		},
+		{
+			MethodName: "Verify",
+			Handler:    _Agent_Verify_Handler,
+		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "pkg/agent.proto",
+	Metadata: "agent.proto",
 }
