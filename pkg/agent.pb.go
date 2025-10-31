@@ -7,12 +7,11 @@
 package pkg
 
 import (
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
-
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -262,7 +261,7 @@ func (x *RegisterRequest) GetIp() string {
 
 type RegisterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	RegisterId    int32                  `protobuf:"varint,1,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
+	RegisterId    string                 `protobuf:"bytes,1,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -297,17 +296,17 @@ func (*RegisterResponse) Descriptor() ([]byte, []int) {
 	return file_pkg_agent_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *RegisterResponse) GetRegisterId() int32 {
+func (x *RegisterResponse) GetRegisterId() string {
 	if x != nil {
 		return x.RegisterId
 	}
-	return 0
+	return ""
 }
 
 type UnregisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	NodeType      NodeType               `protobuf:"varint,1,opt,name=node_type,json=nodeType,proto3,enum=pkg.NodeType" json:"node_type,omitempty"`
-	RegisterId    int32                  `protobuf:"varint,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
+	RegisterId    string                 `protobuf:"bytes,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -349,11 +348,11 @@ func (x *UnregisterRequest) GetNodeType() NodeType {
 	return NodeType_SHADOWSOCKS
 }
 
-func (x *UnregisterRequest) GetRegisterId() int32 {
+func (x *UnregisterRequest) GetRegisterId() string {
 	if x != nil {
 		return x.RegisterId
 	}
-	return 0
+	return ""
 }
 
 type UnregisterResult struct {
@@ -403,7 +402,7 @@ func (x *UnregisterResult) GetResult() bool {
 type HeartbeatRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	NodeType      NodeType               `protobuf:"varint,1,opt,name=node_type,json=nodeType,proto3,enum=pkg.NodeType" json:"node_type,omitempty"`
-	RegisterId    int32                  `protobuf:"varint,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
+	RegisterId    string                 `protobuf:"bytes,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -445,11 +444,11 @@ func (x *HeartbeatRequest) GetNodeType() NodeType {
 	return NodeType_SHADOWSOCKS
 }
 
-func (x *HeartbeatRequest) GetRegisterId() int32 {
+func (x *HeartbeatRequest) GetRegisterId() string {
 	if x != nil {
 		return x.RegisterId
 	}
-	return 0
+	return ""
 }
 
 type HeartbeatResponse struct {
@@ -499,7 +498,7 @@ func (x *HeartbeatResponse) GetResult() bool {
 type SubmitRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	NodeType      NodeType               `protobuf:"varint,1,opt,name=node_type,json=nodeType,proto3,enum=pkg.NodeType" json:"node_type,omitempty"`
-	RegisterId    int32                  `protobuf:"varint,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
+	RegisterId    string                 `protobuf:"bytes,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
 	RawData       []byte                 `protobuf:"bytes,3,opt,name=raw_data,json=rawData,proto3" json:"raw_data,omitempty"`
 	RawStats      []byte                 `protobuf:"bytes,4,opt,name=raw_stats,json=rawStats,proto3" json:"raw_stats,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -543,11 +542,11 @@ func (x *SubmitRequest) GetNodeType() NodeType {
 	return NodeType_SHADOWSOCKS
 }
 
-func (x *SubmitRequest) GetRegisterId() int32 {
+func (x *SubmitRequest) GetRegisterId() string {
 	if x != nil {
 		return x.RegisterId
 	}
-	return 0
+	return ""
 }
 
 func (x *SubmitRequest) GetRawData() []byte {
@@ -611,7 +610,7 @@ func (x *SubmitResponse) GetResult() bool {
 type UsersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	NodeType      NodeType               `protobuf:"varint,1,opt,name=node_type,json=nodeType,proto3,enum=pkg.NodeType" json:"node_type,omitempty"`
-	RegisterId    int32                  `protobuf:"varint,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
+	RegisterId    string                 `protobuf:"bytes,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -653,11 +652,11 @@ func (x *UsersRequest) GetNodeType() NodeType {
 	return NodeType_SHADOWSOCKS
 }
 
-func (x *UsersRequest) GetRegisterId() int32 {
+func (x *UsersRequest) GetRegisterId() string {
 	if x != nil {
 		return x.RegisterId
 	}
-	return 0
+	return ""
 }
 
 type UsersResponse struct {
@@ -704,6 +703,102 @@ func (x *UsersResponse) GetRawData() []byte {
 	return nil
 }
 
+type VerifyRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	NodeType      NodeType               `protobuf:"varint,1,opt,name=node_type,json=nodeType,proto3,enum=pkg.NodeType" json:"node_type,omitempty"`
+	RegisterId    string                 `protobuf:"bytes,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VerifyRequest) Reset() {
+	*x = VerifyRequest{}
+	mi := &file_pkg_agent_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VerifyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyRequest) ProtoMessage() {}
+
+func (x *VerifyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_agent_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyRequest.ProtoReflect.Descriptor instead.
+func (*VerifyRequest) Descriptor() ([]byte, []int) {
+	return file_pkg_agent_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *VerifyRequest) GetNodeType() NodeType {
+	if x != nil {
+		return x.NodeType
+	}
+	return NodeType_SHADOWSOCKS
+}
+
+func (x *VerifyRequest) GetRegisterId() string {
+	if x != nil {
+		return x.RegisterId
+	}
+	return ""
+}
+
+type VerifyResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Result        bool                   `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VerifyResponse) Reset() {
+	*x = VerifyResponse{}
+	mi := &file_pkg_agent_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VerifyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyResponse) ProtoMessage() {}
+
+func (x *VerifyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_agent_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyResponse.ProtoReflect.Descriptor instead.
+func (*VerifyResponse) Descriptor() ([]byte, []int) {
+	return file_pkg_agent_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *VerifyResponse) GetResult() bool {
+	if x != nil {
+		return x.Result
+	}
+	return false
+}
+
 var File_pkg_agent_proto protoreflect.FileDescriptor
 
 const file_pkg_agent_proto_rawDesc = "" +
@@ -722,23 +817,23 @@ const file_pkg_agent_proto_rawDesc = "" +
 	"\x04port\x18\x04 \x01(\tR\x04port\x12\x0e\n" +
 	"\x02ip\x18\x05 \x01(\tR\x02ip\"3\n" +
 	"\x10RegisterResponse\x12\x1f\n" +
-	"\vregister_id\x18\x01 \x01(\x05R\n" +
+	"\vregister_id\x18\x01 \x01(\tR\n" +
 	"registerId\"`\n" +
 	"\x11UnregisterRequest\x12*\n" +
 	"\tnode_type\x18\x01 \x01(\x0e2\r.pkg.NodeTypeR\bnodeType\x12\x1f\n" +
-	"\vregister_id\x18\x02 \x01(\x05R\n" +
+	"\vregister_id\x18\x02 \x01(\tR\n" +
 	"registerId\"*\n" +
 	"\x10UnregisterResult\x12\x16\n" +
 	"\x06result\x18\x01 \x01(\bR\x06result\"_\n" +
 	"\x10HeartbeatRequest\x12*\n" +
 	"\tnode_type\x18\x01 \x01(\x0e2\r.pkg.NodeTypeR\bnodeType\x12\x1f\n" +
-	"\vregister_id\x18\x02 \x01(\x05R\n" +
+	"\vregister_id\x18\x02 \x01(\tR\n" +
 	"registerId\"+\n" +
 	"\x11HeartbeatResponse\x12\x16\n" +
 	"\x06result\x18\x01 \x01(\bR\x06result\"\x94\x01\n" +
 	"\rSubmitRequest\x12*\n" +
 	"\tnode_type\x18\x01 \x01(\x0e2\r.pkg.NodeTypeR\bnodeType\x12\x1f\n" +
-	"\vregister_id\x18\x02 \x01(\x05R\n" +
+	"\vregister_id\x18\x02 \x01(\tR\n" +
 	"registerId\x12\x19\n" +
 	"\braw_data\x18\x03 \x01(\fR\arawData\x12\x1b\n" +
 	"\traw_stats\x18\x04 \x01(\fR\brawStats\"(\n" +
@@ -746,10 +841,16 @@ const file_pkg_agent_proto_rawDesc = "" +
 	"\x06result\x18\x01 \x01(\bR\x06result\"[\n" +
 	"\fUsersRequest\x12*\n" +
 	"\tnode_type\x18\x01 \x01(\x0e2\r.pkg.NodeTypeR\bnodeType\x12\x1f\n" +
-	"\vregister_id\x18\x02 \x01(\x05R\n" +
+	"\vregister_id\x18\x02 \x01(\tR\n" +
 	"registerId\"*\n" +
 	"\rUsersResponse\x12\x19\n" +
-	"\braw_data\x18\x01 \x01(\fR\arawData*[\n" +
+	"\braw_data\x18\x01 \x01(\fR\arawData\"\\\n" +
+	"\rVerifyRequest\x12*\n" +
+	"\tnode_type\x18\x01 \x01(\x0e2\r.pkg.NodeTypeR\bnodeType\x12\x1f\n" +
+	"\vregister_id\x18\x02 \x01(\tR\n" +
+	"registerId\"(\n" +
+	"\x0eVerifyResponse\x12\x16\n" +
+	"\x06result\x18\x01 \x01(\bR\x06result*[\n" +
 	"\bNodeType\x12\x0f\n" +
 	"\vSHADOWSOCKS\x10\x00\x12\n" +
 	"\n" +
@@ -758,7 +859,7 @@ const file_pkg_agent_proto_rawDesc = "" +
 	"\bHYSTERIA\x10\x03\x12\r\n" +
 	"\tHYSTERIA2\x10\x04\x12\n" +
 	"\n" +
-	"\x06ANYTLS\x10\x062\xcf\x02\n" +
+	"\x06ANYTLS\x10\x062\x82\x03\n" +
 	"\x05Agent\x121\n" +
 	"\x06Config\x12\x12.pkg.ConfigRequest\x1a\x13.pkg.ConfigResponse\x12:\n" +
 	"\tHeartbeat\x12\x15.pkg.HeartbeatRequest\x1a\x16.pkg.HeartbeatResponse\x121\n" +
@@ -766,7 +867,8 @@ const file_pkg_agent_proto_rawDesc = "" +
 	"\x05Users\x12\x11.pkg.UsersRequest\x1a\x12.pkg.UsersResponse\x127\n" +
 	"\bRegister\x12\x14.pkg.RegisterRequest\x1a\x15.pkg.RegisterResponse\x12;\n" +
 	"\n" +
-	"Unregister\x12\x16.pkg.UnregisterRequest\x1a\x15.pkg.UnregisterResultB0Z.github.com/xflash-panda/server-agent-proto/pkgb\x06proto3"
+	"Unregister\x12\x16.pkg.UnregisterRequest\x1a\x15.pkg.UnregisterResult\x121\n" +
+	"\x06Verify\x12\x12.pkg.VerifyRequest\x1a\x13.pkg.VerifyResponseB0Z.github.com/xflash-panda/server-agent-proto/pkgb\x06proto3"
 
 var (
 	file_pkg_agent_proto_rawDescOnce sync.Once
@@ -781,7 +883,7 @@ func file_pkg_agent_proto_rawDescGZIP() []byte {
 }
 
 var file_pkg_agent_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_pkg_agent_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_pkg_agent_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_pkg_agent_proto_goTypes = []any{
 	(NodeType)(0),             // 0: pkg.NodeType
 	(*ConfigRequest)(nil),     // 1: pkg.ConfigRequest
@@ -796,6 +898,8 @@ var file_pkg_agent_proto_goTypes = []any{
 	(*SubmitResponse)(nil),    // 10: pkg.SubmitResponse
 	(*UsersRequest)(nil),      // 11: pkg.UsersRequest
 	(*UsersResponse)(nil),     // 12: pkg.UsersResponse
+	(*VerifyRequest)(nil),     // 13: pkg.VerifyRequest
+	(*VerifyResponse)(nil),    // 14: pkg.VerifyResponse
 }
 var file_pkg_agent_proto_depIdxs = []int32{
 	0,  // 0: pkg.ConfigRequest.node_type:type_name -> pkg.NodeType
@@ -804,23 +908,26 @@ var file_pkg_agent_proto_depIdxs = []int32{
 	0,  // 3: pkg.HeartbeatRequest.node_type:type_name -> pkg.NodeType
 	0,  // 4: pkg.SubmitRequest.node_type:type_name -> pkg.NodeType
 	0,  // 5: pkg.UsersRequest.node_type:type_name -> pkg.NodeType
-	1,  // 6: pkg.Agent.Config:input_type -> pkg.ConfigRequest
-	7,  // 7: pkg.Agent.Heartbeat:input_type -> pkg.HeartbeatRequest
-	9,  // 8: pkg.Agent.Submit:input_type -> pkg.SubmitRequest
-	11, // 9: pkg.Agent.Users:input_type -> pkg.UsersRequest
-	3,  // 10: pkg.Agent.Register:input_type -> pkg.RegisterRequest
-	5,  // 11: pkg.Agent.Unregister:input_type -> pkg.UnregisterRequest
-	2,  // 12: pkg.Agent.Config:output_type -> pkg.ConfigResponse
-	8,  // 13: pkg.Agent.Heartbeat:output_type -> pkg.HeartbeatResponse
-	10, // 14: pkg.Agent.Submit:output_type -> pkg.SubmitResponse
-	12, // 15: pkg.Agent.Users:output_type -> pkg.UsersResponse
-	4,  // 16: pkg.Agent.Register:output_type -> pkg.RegisterResponse
-	6,  // 17: pkg.Agent.Unregister:output_type -> pkg.UnregisterResult
-	12, // [12:18] is the sub-list for method output_type
-	6,  // [6:12] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	0,  // 6: pkg.VerifyRequest.node_type:type_name -> pkg.NodeType
+	1,  // 7: pkg.Agent.Config:input_type -> pkg.ConfigRequest
+	7,  // 8: pkg.Agent.Heartbeat:input_type -> pkg.HeartbeatRequest
+	9,  // 9: pkg.Agent.Submit:input_type -> pkg.SubmitRequest
+	11, // 10: pkg.Agent.Users:input_type -> pkg.UsersRequest
+	3,  // 11: pkg.Agent.Register:input_type -> pkg.RegisterRequest
+	5,  // 12: pkg.Agent.Unregister:input_type -> pkg.UnregisterRequest
+	13, // 13: pkg.Agent.Verify:input_type -> pkg.VerifyRequest
+	2,  // 14: pkg.Agent.Config:output_type -> pkg.ConfigResponse
+	8,  // 15: pkg.Agent.Heartbeat:output_type -> pkg.HeartbeatResponse
+	10, // 16: pkg.Agent.Submit:output_type -> pkg.SubmitResponse
+	12, // 17: pkg.Agent.Users:output_type -> pkg.UsersResponse
+	4,  // 18: pkg.Agent.Register:output_type -> pkg.RegisterResponse
+	6,  // 19: pkg.Agent.Unregister:output_type -> pkg.UnregisterResult
+	14, // 20: pkg.Agent.Verify:output_type -> pkg.VerifyResponse
+	14, // [14:21] is the sub-list for method output_type
+	7,  // [7:14] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_pkg_agent_proto_init() }
@@ -834,7 +941,7 @@ func file_pkg_agent_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_pkg_agent_proto_rawDesc), len(file_pkg_agent_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   12,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

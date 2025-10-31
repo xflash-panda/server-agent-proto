@@ -32,12 +32,12 @@ message RegisterRequest {
 }
 
 message RegisterResponse {
-  int32 register_id = 1;
+  string register_id = 1;
 }
 
 message UnregisterRequest {
   NodeType node_type = 1;
-  int32 register_id = 2;
+  string register_id = 2;
 }
 
 message UnregisterResult {
@@ -46,7 +46,7 @@ message UnregisterResult {
 
 message HeartbeatRequest {
   NodeType node_type = 1;
-  int32 register_id = 2;
+  string register_id = 2;
 }
 
 message HeartbeatResponse {
@@ -55,7 +55,7 @@ message HeartbeatResponse {
 
 message SubmitRequest {
   NodeType node_type = 1;
-  int32 register_id = 2;
+  string register_id = 2;
   bytes raw_data  = 3;
   bytes raw_stats = 4;
 }
@@ -66,10 +66,18 @@ message SubmitResponse {
 
 message UsersRequest {
   NodeType node_type = 1;
-  int32 register_id = 2;
+  string register_id = 2;
 }
 message UsersResponse {
   bytes raw_data = 1;
+}
+
+message VerifyRequest {
+  NodeType node_type = 1;
+  string register_id = 2;
+}
+message VerifyResponse {
+  bool result = 1;
 }
 
 service Agent
@@ -80,4 +88,5 @@ service Agent
   rpc Users(UsersRequest) returns (UsersResponse);
   rpc Register(RegisterRequest) returns (RegisterResponse);
   rpc Unregister(UnregisterRequest) returns (UnregisterResult);
+  rpc Verify(VerifyRequest) returns (VerifyResponse);
 }
