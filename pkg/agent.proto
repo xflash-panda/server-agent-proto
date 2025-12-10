@@ -11,6 +11,7 @@ enum NodeType {
   HYSTERIA = 3;
   HYSTERIA2 = 4;
   ANYTLS = 6;
+  TUIC = 7;
 }
 
 message ConfigRequest {
