@@ -67,7 +67,7 @@ message SubmitResponse {
 
 message UsersRequest {
   NodeType node_type = 1;
-  string register_id = 2;
+  int32 node_id = 2;
 }
 message UsersResponse {
   bytes raw_data = 1;

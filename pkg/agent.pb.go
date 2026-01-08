@@ -613,7 +613,7 @@ func (x *SubmitResponse) GetResult() bool {
 type UsersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	NodeType      NodeType               `protobuf:"varint,1,opt,name=node_type,json=nodeType,proto3,enum=pkg.NodeType" json:"node_type,omitempty"`
-	RegisterId    string                 `protobuf:"bytes,2,opt,name=register_id,json=registerId,proto3" json:"register_id,omitempty"`
+	NodeId        int32                  `protobuf:"varint,2,opt,name=node_id,json=nodeId,proto3" json:"node_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -655,11 +655,11 @@ func (x *UsersRequest) GetNodeType() NodeType {
 	return NodeType_SHADOWSOCKS
 }
 
-func (x *UsersRequest) GetRegisterId() string {
+func (x *UsersRequest) GetNodeId() int32 {
 	if x != nil {
-		return x.RegisterId
+		return x.NodeId
 	}
-	return ""
+	return 0
 }
 
 type UsersResponse struct {
@@ -841,11 +841,10 @@ const file_pkg_agent_proto_rawDesc = "" +
 	"\braw_data\x18\x03 \x01(\fR\arawData\x12\x1b\n" +
 	"\traw_stats\x18\x04 \x01(\fR\brawStats\"(\n" +
 	"\x0eSubmitResponse\x12\x16\n" +
-	"\x06result\x18\x01 \x01(\bR\x06result\"[\n" +
+	"\x06result\x18\x01 \x01(\bR\x06result\"S\n" +
 	"\fUsersRequest\x12*\n" +
-	"\tnode_type\x18\x01 \x01(\x0e2\r.pkg.NodeTypeR\bnodeType\x12\x1f\n" +
-	"\vregister_id\x18\x02 \x01(\tR\n" +
-	"registerId\"*\n" +
+	"\tnode_type\x18\x01 \x01(\x0e2\r.pkg.NodeTypeR\bnodeType\x12\x17\n" +
+	"\anode_id\x18\x02 \x01(\x05R\x06nodeId\"*\n" +
 	"\rUsersResponse\x12\x19\n" +
 	"\braw_data\x18\x01 \x01(\fR\arawData\"\\\n" +
 	"\rVerifyRequest\x12*\n" +
